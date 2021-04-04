@@ -43,11 +43,15 @@ public class InputProcessor {
                 phone = phoneGenerator.buildResponse();
             }
 
-            result = new Person(input,
-                    fullName,
-                    physical,
-                    appearance,
-                    phone).toString();
+
+            result = Person.personBuilder()
+                    .setID(input)
+                    .setFullName(fullName)
+                    .setPhys(physical)
+                    .setAppearance(appearance)
+                    .setPhone(phone)
+                    .build()
+                    .toString();
         } else {
             result = "Неверный ввод.";
         }

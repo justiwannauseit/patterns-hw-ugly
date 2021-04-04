@@ -4,22 +4,47 @@ import person.appearance.Appearance;
 
 public class Person {
 
-    private final String id;
-    private final String fullName;
-    private final Physical phys;
-    private final Appearance appearance;
-    private final Phone phone;
+    private String id;
+    private String fullName;
+    private Physical phys;
+    private Appearance appearance;
+    private Phone phone;
 
-    public Person(final String id,
-                  final String fullName,
-                  final Physical phys,
-                  final Appearance appearance,
-                  final Phone phone) {
-        this.id = id;
-        this.fullName = fullName;
-        this.phys = phys;
-        this.appearance = appearance;
-        this.phone = phone;
+    //использовал патерн Builder
+    private Person(){}
+    public static PersonBuilder personBuilder(){
+        return new Person().new PersonBuilder();
+    }
+
+    public class PersonBuilder{
+
+        private PersonBuilder(){}
+
+        public PersonBuilder setID(String id){
+            Person.this.id = id;
+            return this;
+        }
+        public PersonBuilder setFullName(String fullName){
+            Person.this.fullName = fullName;
+            return this;
+        }
+        public PersonBuilder setPhys(Physical phys){
+            Person.this.phys = phys;
+            return this;
+        }
+        public PersonBuilder setAppearance(Appearance appearance){
+            Person.this.appearance = appearance;
+            return this;
+        }
+        public PersonBuilder setPhone (Phone phone){
+            Person.this.phone = phone;
+            return this;
+        }
+
+        public Person build(){
+            return Person.this;
+        }
+
     }
 
 
