@@ -1,9 +1,19 @@
 package person.appearance;
 
-public final class EyesColor {
-    public static final String BLUE = "голубые";
-    public static final String GREEN = "зелёные";
-    public static final String BROWN = "карие";
-    public static final String GRAY = "серые";
-    public static final String DIFF = "разные";
+public enum EyesColor {
+    BLUE("голубые"),
+    GREEN("зелёные"),
+    BROWN("карие"),
+    GRAY("серые"),
+    DIFF("разные");
+
+    final private String color;
+
+    EyesColor(String color) {
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
 }

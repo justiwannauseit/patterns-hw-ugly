@@ -2,10 +2,7 @@ package generators;
 
 import person.appearance.Appearance;
 import person.appearance.EyesColor;
-import person.appearance.hair.Hair;
-import person.appearance.hair.LongHair;
-import person.appearance.hair.NoHair;
-import person.appearance.hair.ShortHair;
+import person.appearance.hair.*;
 
 import java.util.HashMap;
 
@@ -26,38 +23,27 @@ public class AppearanceGenerator implements Generator<Appearance> {
         final int i = code % 100 / 10;
         switch (i / 2) {
             case 0:
-                eyes = EyesColor.BLUE;
+                eyes = EyesColor.BLUE.getColor();
                 break;
             case 1:
-                eyes = EyesColor.GREEN;
+                eyes = EyesColor.GREEN.getColor();
                 break;
             case 2:
-                eyes = EyesColor.BROWN;
+                eyes = EyesColor.BROWN.getColor();
                 break;
             case 3:
-                eyes = EyesColor.GRAY;
+                eyes = EyesColor.GRAY.getColor();
                 break;
             case 4:
-                eyes = EyesColor.DIFF;
+                eyes = EyesColor.DIFF.getColor();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + i / 2);
         }
         hairLength = i;
 
-        final HashMap<Integer, String> hairColorMap = new HashMap<>() {{
-            put(1, "чёрные");
-            put(2, "каштановые");
-            put(3, "рыжие");
-            put(4, "светлые");
-            put(5, "седые");
-            put(6, "розовые");
-            put(7, "зелёные");
-            put(8, "фиолетовые");
-            put(9, "синие");
-        }};
-        if (i > 0) {
-            hairColor = hairColorMap.get(i);
+        if (i > 0 && HairColor.getByColorID(i).isPresent()) {
+            hairColor = HairColor.getByColorID(i).get();
         }
     }
 

@@ -9,6 +9,11 @@ import person.appearance.Appearance;
 
 public class InputProcessor {
 
+    private final FioGenerator fioGenerator = new FioGenerator();
+    private final PhysGenerator physGenerator = new PhysGenerator();
+    private final AppearanceGenerator appearanceGenerator = new AppearanceGenerator();
+    private final PhoneGenerator phoneGenerator = new PhoneGenerator();
+
     public final String processInput(final String input) {
         String result;
 
@@ -16,23 +21,24 @@ public class InputProcessor {
             // Создаём Person
             final int intCode = Integer.parseInt(input);
 
-            final FioGenerator fioGenerator = new FioGenerator();
             fioGenerator.generateParams(intCode);
-            //DTO скорее всего. Собирается полное имя сразу в одном стринге ();
-            String fullName = fioGenerator.getLastName() + " " + fioGenerator.getFirstName() + " " + fioGenerator.getMiddleName();
 
-            final PhysGenerator physGenerator = new PhysGenerator();
+            //Хотел DTO но зачем, когда можно как то так:
+            String DELIMITER = " ";
+            final String fullName = fioGenerator.getLastName() +
+                    DELIMITER +
+                    fioGenerator.getFirstName() +
+                    DELIMITER +
+                    fioGenerator.getMiddleName();
+
             physGenerator.generateParams(intCode);
             final Physical physical = physGenerator.buildResponse();
-
-            final AppearanceGenerator appearanceGenerator = new AppearanceGenerator();
             appearanceGenerator.generateParams(intCode);
             final Appearance appearance = appearanceGenerator.buildResponse();
 
             Phone phone = null;
             // добавляем телефон, только если введённый код не палиндром
             if (!input.equals(new StringBuilder(input).reverse().toString())) {
-                final PhoneGenerator phoneGenerator = new PhoneGenerator();
                 phoneGenerator.generateParams(intCode);
                 phone = phoneGenerator.buildResponse();
             }
