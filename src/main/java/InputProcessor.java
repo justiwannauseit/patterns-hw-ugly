@@ -18,9 +18,8 @@ public class InputProcessor {
 
             final FioGenerator fioGenerator = new FioGenerator();
             fioGenerator.generateParams(intCode);
-            final String lastName = fioGenerator.getLastName();
-            final String firstName = fioGenerator.getFirstName();
-            final String middleName = fioGenerator.getMiddleName();
+            //DTO скорее всего. Собирается полное имя сразу в одном стринге ();
+            String fullName = fioGenerator.getLastName() + " " + fioGenerator.getFirstName() + " " + fioGenerator.getMiddleName();
 
             final PhysGenerator physGenerator = new PhysGenerator();
             physGenerator.generateParams(intCode);
@@ -39,7 +38,7 @@ public class InputProcessor {
             }
 
             result = new Person(input,
-                    lastName, firstName, middleName,
+                    fullName,
                     physical,
                     appearance,
                     phone).toString();
