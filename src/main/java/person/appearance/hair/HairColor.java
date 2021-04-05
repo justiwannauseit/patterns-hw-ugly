@@ -17,7 +17,7 @@ public enum HairColor {
     private final int colorID;
     private final String color;
 
-    HairColor(int colorID, String color) {
+    HairColor(final int colorID, final String color) {
         this.colorID = colorID;
         this.color = color;
     }
@@ -30,7 +30,7 @@ public enum HairColor {
         return colorID;
     }
 
-    public static Optional<String> getByColorID(int colorID) {
+    public static Optional<String> getByColorID(final int colorID) {
         for (HairColor color : HairColor.values()) {
             if (color.getColorID() == colorID) {
                 return Optional.of(color.getColor());

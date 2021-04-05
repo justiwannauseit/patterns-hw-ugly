@@ -24,12 +24,11 @@ public class InputProcessor {
             fioGenerator.generateParams(intCode);
 
             //Это DTO ведь так?:
-            String DELIMITER = " ";
-            final String fullName = fioGenerator.getLastName() +
-                    DELIMITER +
-                    fioGenerator.getFirstName() +
-                    DELIMITER +
-                    fioGenerator.getMiddleName();
+            final String DELIMITER = " ";
+            final String fullName = fioGenerator
+                    .getLastName() + DELIMITER + fioGenerator
+                    .getFirstName() + DELIMITER + fioGenerator
+                    .getMiddleName();
 
             physGenerator.generateParams(intCode);
             final Physical physical = physGenerator.buildResponse();

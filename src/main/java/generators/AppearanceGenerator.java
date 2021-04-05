@@ -4,8 +4,6 @@ import person.appearance.Appearance;
 import person.appearance.EyesColor;
 import person.appearance.hair.*;
 
-import java.util.HashMap;
-
 public class AppearanceGenerator implements Generator<Appearance> {
 
     private String eyes;
@@ -23,10 +21,12 @@ public class AppearanceGenerator implements Generator<Appearance> {
     public final void generateParams(final int code) {
         final int i = code % 100 / 10;
 
-        eyesColorID = i/2;
-        if (EyesColor.getByColorID(eyesColorID).isPresent()){
+        eyesColorID = i / 2;
+        if (EyesColor.getByColorID(eyesColorID).isPresent()) {
             eyes = EyesColor.getByColorID(eyesColorID).get();
-        } else throw new IllegalStateException("Unexpected value: " + i / 2);
+        } else {
+            throw new IllegalStateException("Unexpected value: " + i / 2);
+        }
 
         hairLength = i;
         if (i > 0 && HairColor.getByColorID(i).isPresent()) {

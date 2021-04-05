@@ -2,7 +2,7 @@ package person;
 
 import person.appearance.Appearance;
 
-public class Person {
+public final class Person {
 
     private String id;
     private String fullName;
@@ -11,37 +11,44 @@ public class Person {
     private Phone phone;
 
     //использовал патерн Builder
-    private Person(){}
-    public static PersonBuilder personBuilder(){
+    private Person() {
+    }
+
+    public static PersonBuilder personBuilder() {
         return new Person().new PersonBuilder();
     }
 
-    public class PersonBuilder{
+    public final class PersonBuilder {
 
-        private PersonBuilder(){}
+        private PersonBuilder() {
+        }
 
-        public PersonBuilder setID(String id){
+        public PersonBuilder setID(final String id) {
             Person.this.id = id;
             return this;
         }
-        public PersonBuilder setFullName(String fullName){
+
+        public PersonBuilder setFullName(final String fullName) {
             Person.this.fullName = fullName;
             return this;
         }
-        public PersonBuilder setPhys(Physical phys){
+
+        public PersonBuilder setPhys(final Physical phys) {
             Person.this.phys = phys;
             return this;
         }
-        public PersonBuilder setAppearance(Appearance appearance){
+
+        public PersonBuilder setAppearance(final Appearance appearance) {
             Person.this.appearance = appearance;
             return this;
         }
-        public PersonBuilder setPhone (Phone phone){
+
+        public PersonBuilder setPhone(final Phone phone) {
             Person.this.phone = phone;
             return this;
         }
 
-        public Person build(){
+        public Person build() {
             return Person.this;
         }
 

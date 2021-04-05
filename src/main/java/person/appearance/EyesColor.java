@@ -1,7 +1,5 @@
 package person.appearance;
 
-import person.appearance.hair.HairColor;
-
 import java.util.Optional;
 
 public enum EyesColor {
@@ -14,7 +12,7 @@ public enum EyesColor {
     final private int colorID;
     final private String color;
 
-    EyesColor(int colorID, String color) {
+    EyesColor(final int colorID, final String color) {
         this.colorID = colorID;
         this.color = color;
     }
@@ -23,11 +21,11 @@ public enum EyesColor {
         return color;
     }
 
-    public int getColorID(){
+    public int getColorID() {
         return colorID;
     }
 
-    public static Optional<String> getByColorID(int colorID) {
+    public static Optional<String> getByColorID(final int colorID) {
         for (EyesColor color : EyesColor.values()) {
             if (color.getColorID() == colorID) {
                 return Optional.of(color.getColor());
