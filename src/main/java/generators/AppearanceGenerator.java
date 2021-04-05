@@ -2,7 +2,13 @@ package generators;
 
 import person.appearance.Appearance;
 import person.appearance.EyesColor;
-import person.appearance.hair.*;
+import person.appearance.hair.HairColor;
+import person.appearance.hair.LongHair;
+import person.appearance.hair.NoHair;
+import person.appearance.hair.ShortHair;
+import person.appearance.hair.Hair;
+
+
 
 public class AppearanceGenerator implements Generator<Appearance> {
 
