@@ -23,7 +23,7 @@ public class InputProcessor {
 
             fioGenerator.generateParams(intCode);
 
-            //Хотел DTO но зачем, когда можно как то так:
+            //Это DTO ведь так?:
             String DELIMITER = " ";
             final String fullName = fioGenerator.getLastName() +
                     DELIMITER +
@@ -43,7 +43,7 @@ public class InputProcessor {
                 phone = phoneGenerator.buildResponse();
             }
 
-
+            //и вот в этом месте Builder собственно и собирает:
             result = Person.personBuilder()
                     .setID(input)
                     .setFullName(fullName)
