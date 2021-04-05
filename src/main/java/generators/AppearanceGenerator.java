@@ -22,25 +22,6 @@ public class AppearanceGenerator implements Generator<Appearance> {
     @Override
     public final void generateParams(final int code) {
         final int i = code % 100 / 10;
-//        switch (i / 2) {
-//            case 0:
-//                eyes = EyesColor.BLUE.getColor();
-//                break;
-//            case 1:
-//                eyes = EyesColor.GREEN.getColor();
-//                break;
-//            case 2:
-//                eyes = EyesColor.BROWN.getColor();
-//                break;
-//            case 3:
-//                eyes = EyesColor.GRAY.getColor();
-//                break;
-//            case 4:
-//                eyes = EyesColor.DIFF.getColor();
-//                break;
-//            default:
-//                throw new IllegalStateException("Unexpected value: " + i / 2);
-//        }
 
         eyesColorID = i/2;
         if (EyesColor.getByColorID(eyesColorID).isPresent()){
