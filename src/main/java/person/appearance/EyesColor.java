@@ -9,8 +9,8 @@ public enum EyesColor {
     GRAY(3, "серые"),
     DIFF(4, "разные");
 
-    final private int colorID;
-    final private String color;
+    private final int colorID;
+    private final String color;
 
     EyesColor(final int colorID, final String color) {
         this.colorID = colorID;
