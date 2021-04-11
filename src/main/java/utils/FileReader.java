@@ -6,7 +6,10 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileReader {
+public final class FileReader {
+
+    private FileReader() {
+    }
 
     public static List<String> getLinesFromFile(final String fileName) {
         List<String> list = new ArrayList<>();

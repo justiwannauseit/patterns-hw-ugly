@@ -2,13 +2,9 @@ package generators;
 
 import person.appearance.Appearance;
 import person.appearance.EyesColor;
-import person.appearance.hair.HairColor;
-import person.appearance.hair.LongHair;
-import person.appearance.hair.NoHair;
-import person.appearance.hair.ShortHair;
 import person.appearance.hair.Hair;
-
-
+import person.appearance.hair.HairColor;
+import person.appearance.hair.HairLength;
 
 public class AppearanceGenerator implements Generator<Appearance> {
 
@@ -27,6 +23,7 @@ public class AppearanceGenerator implements Generator<Appearance> {
     public final void generateParams(final int code) {
         final int i = code % 100 / 10;
 
+        //убрал switch
         eyesColorID = i / 2;
         if (EyesColor.getByColorID(eyesColorID).isPresent()) {
             eyes = EyesColor.getByColorID(eyesColorID).get();
@@ -42,12 +39,17 @@ public class AppearanceGenerator implements Generator<Appearance> {
 
     @Override
     public final Appearance buildResponse() {
-        Hair hair;
+        Hair hair = new Hair();
         if (hairLength > 0) {
-            hair = (hairLength > 4) ? new LongHair(hairColor) : new ShortHair(hairColor);
+            if (hairLength > 4) {
+                hair.setHairLength(HairLength.LONG);
+            } else {
+                hair.setHairLength(HairLength.SHORT);
+            }
         } else {
-            hair = new NoHair();
+            hair.setHairLength(HairLength.BALD);
         }
+        hair.setHairColor(HairColor.getByColorName(hairColor));
         return new Appearance(eyes, hair);
     }
 }

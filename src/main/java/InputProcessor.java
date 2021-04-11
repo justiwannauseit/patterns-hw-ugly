@@ -20,20 +20,16 @@ public class InputProcessor {
         if (input.trim().matches("\\d{4}")) {
             // Создаём Person
             final int intCode = Integer.parseInt(input);
-
             fioGenerator.generateParams(intCode);
 
-            //Это DTO ведь так?:
-            final String DELIMITER = " ";
-            final String fullName = fioGenerator
-                    .getLastName() + DELIMITER + fioGenerator
-                    .getFirstName() + DELIMITER + fioGenerator
-                    .getMiddleName();
+
+            String fullName = fioGenerator.buildFullName();
 
             physGenerator.generateParams(intCode);
             final Physical physical = physGenerator.buildResponse();
             appearanceGenerator.generateParams(intCode);
             final Appearance appearance = appearanceGenerator.buildResponse();
+
 
             Phone phone = null;
             // добавляем телефон, только если введённый код не палиндром

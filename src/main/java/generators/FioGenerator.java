@@ -25,7 +25,12 @@ public class FioGenerator {
         setMiddleNameFromFile(getDigitsSum(code % 100), sex);
     }
 
-    public String getLastName() {
+    //метод позволяющий получить сразу полное имя
+    public final String buildFullName() {
+        return getLastName() + " " + getFirstName() + " " + getMiddleName();
+    }
+
+    public final String getLastName() {
         return lastName;
     }
 
@@ -48,5 +53,8 @@ public class FioGenerator {
     private void setMiddleNameFromFile(final int i, final String sex) {
         middleName = getLinesFromFile("middleNames_" + sex).get(i);
     }
+
+
+
 }
 

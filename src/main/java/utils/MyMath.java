@@ -1,6 +1,9 @@
 package utils;
 
-public class MyMath {
+public final class MyMath {
+
+    private MyMath() {
+    }
 
     public static int getDigitsSum(final int i) {
         int src = i;
